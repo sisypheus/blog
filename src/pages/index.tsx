@@ -40,7 +40,7 @@ const IndexPage: React.FC<PageProps<DataProps>> = ({data, path}) => (
             height={390}
             quality={100}
           />
-          <div data-sal="slide-left" data-sal-duration="1200" data-sal-delay="300" className="text-center col-span-3">
+          <div data-sal="slide-left" data-sal-duration="1200" data-sal-delay="300" className="text-center col-span-3 overflow-x-hidden">
             <p className="text-white text-xl">
               Welcome to my blog!
             </p>  
