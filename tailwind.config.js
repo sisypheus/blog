@@ -1,9 +1,13 @@
 module.exports = {
-  //purge: [],
-  purge: ['./src/**/*.{js,jsx,ts,tsx}'],
+  purge: [],
+  //purge: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: false,
   theme: {
-    extend: {},
+    extend: {
+      top: {
+        '1/5': '20%',
+      }
+    }
   },
   variants: {
     extend: {},
