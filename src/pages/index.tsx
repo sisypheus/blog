@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, PageProps, graphql } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
+import { AnchorLink } from 'gatsby-plugin-anchor-links';
 
 import Layout from '../components/layout';
 import Seo from '../components/seo';
@@ -20,17 +21,35 @@ const IndexPage: React.FC<PageProps<DataProps>> = ({data, path}) => (
     <Seo title="Home" />
     <div className="h-screen w-full" style={{ background: `url(${background}) center/cover`}}>
       {/* header part of the page */}
-      <div id="header" className="p-8 sticky w-full text-center bg-transparent">
-        <p className="text-white font-black text-4xl">
-          THEO'S BLOG
-        </p>
+      <div className="flex items-center justify-center">
+        <div className="p-8 sticky w-full flex items-center max-w-7xl justify-between text-center bg-transparent">
+          <p className="text-white font-black text-4xl">
+            <Link to="/">
+              THEO'S BLOG
+            </Link>
+          </p>
+          <div className="text-white space-x-6">
+            <button className="transform duration-300 hover:-translate-y-1">
+              <Link className="p-3 text-lg rounded-lg bg-gray-700 font-extrabold hover:bg-gray-800" to="/search">Search</Link>
+            </button>
+            <button className="transform duration-300 hover:-translate-y-1">
+              <AnchorLink className="p-3 text-lg rounded-lg bg-gray-700 font-extrabold hover:bg-gray-800" to="/#blog-posts">Posts</AnchorLink>
+            </button>
+            <button className="transform duration-300 hover:-translate-y-1">
+              <a href="https://theopoette.me" className="p-3 text-lg rounded-lg bg-gray-700 font-extrabold hover:bg-gray-800">My website</a>
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* main part of the page */}
       <div>
         <div className="flex items-center justify-center">
-          <div className="grid items-center grid-cols-1 md:grid-cols-6 absolute top-1/4 -mt-12">
+          <div className="grid items-center space-y-4 space-x-4 grid-cols-1 md:grid-cols-6 absolute top-1/4 -mt-12">
           <StaticImage
+            data-sal="ease-in"
+            data-sal-delay="100"
+            data-sal-duration="500"
             src="../images/profile.jpg"
             className="rounded-full w-64 h-64 md:w-96 md:h-96 m-4 col-span-3"
             alt="Nice pic of me"
@@ -45,7 +64,13 @@ const IndexPage: React.FC<PageProps<DataProps>> = ({data, path}) => (
           </div>
           </div>
         </div>
+
       </div>
+    </div>
+
+    {/* the blogs posts */}
+    <div id="blog-posts">
+      hello from blog posts!
     </div>
   </Layout>
 )
