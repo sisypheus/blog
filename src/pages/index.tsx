@@ -31,8 +31,6 @@ const IndexPage: React.FC<PageProps<DataProps>> = ({data, path}) => (
         <div className="flex items-center justify-center">
           <div className="grid items-center justify-center grid-cols-1 md:grid-cols-6 absolute top-1/2 transform -translate-y-3/4">
           <StaticImage
-            data-sal-duration="700"
-            data-sal-delay="200"
             src="../images/profile.jpg"
             className="rounded-full w-64 h-64 md:w-96 md:h-96 m-4 col-span-3"
             alt="Nice pic of me"
