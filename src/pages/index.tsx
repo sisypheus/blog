@@ -17,7 +17,7 @@ type DataProps = {
 const IndexPage: React.FC<PageProps<DataProps>> = ({data, path}) => (
   <Layout>
     <Seo title="Home" />
-    <div className="h-screen w-full" style={{ background: `url(../images/layered-waves.svg) center/cover`}}>
+    <div className="h-screen w-full" style={{ background: `url(/images/layered-waves.svg) center/cover`}}>
       {/* header part of the page */}
       <div id="header" className="p-8 sticky w-full text-center bg-transparent">
         <p className="text-white font-black text-4xl">
