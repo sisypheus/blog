@@ -6,6 +6,11 @@ module.exports = {
     extend: {
       top: {
         '1/5': '20%',
+      },
+      width: {
+        '50ch': '50ch',
+        '60ch': '60ch',
+        '70ch': '70ch',
       }
     }
   },

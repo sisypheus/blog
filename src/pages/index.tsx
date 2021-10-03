@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, PageProps, graphql } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
-import { AnchorLink } from 'gatsby-plugin-anchor-links';
 
 import Layout from '../components/layout';
 import Seo from '../components/seo';
@@ -26,6 +25,14 @@ const IndexPage: React.FC<PageProps<DataProps>> = ({data, path}) => {
         node {
           strapiId
           Content
+          Description
+          Cover {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(width: 300, height: 300)
+              }
+            }
+          }
           Title
         }
       }
@@ -37,28 +44,6 @@ const IndexPage: React.FC<PageProps<DataProps>> = ({data, path}) => {
     <Layout>
       <Seo title="Home" />
       <div className="h-screen w-full" style={{ background: `url(${background}) center/cover`}}>
-        {/* header part of the page */}
-        <div className="flex items-center justify-center">
-          <div className="p-8 sticky w-full flex items-center max-w-7xl justify-between text-center bg-transparent">
-            <p className="text-white font-black text-4xl">
-              <Link to="/">
-                THEO'S BLOG
-              </Link>
-            </p>
-            <div className="text-white space-x-6">
-              <button className="transform duration-300 hover:-translate-y-1">
-                <Link className="p-3 text-lg rounded-lg bg-gray-700 font-extrabold hover:bg-gray-800" to="/search">Search</Link>
-              </button>
-              <button className="transform duration-300 hover:-translate-y-1">
-                <AnchorLink className="p-3 text-lg rounded-lg bg-gray-700 font-extrabold hover:bg-gray-800" to="/#blog-posts">Posts</AnchorLink>
-              </button>
-              <button className="transform duration-300 hover:-translate-y-1">
-                <a href="https://theopoette.me" className="p-3 text-lg rounded-lg bg-gray-700 font-extrabold hover:bg-gray-800">My website</a>
-              </button>
-            </div>
-          </div>
-        </div>
-
         {/* main part of the page */}
         <div>
           <div className="flex items-center justify-center">
@@ -75,7 +60,7 @@ const IndexPage: React.FC<PageProps<DataProps>> = ({data, path}) => {
               quality={100}
             />
             <div data-sal="slide-left" data-sal-duration="1200" data-sal-delay="300" className="text-center col-span-3">
-              <p className="text-white text-xl">
+              <p className="text-white text-xl font-extrabold">
                 Welcome to my blog!
               </p>  
             </div>
@@ -86,17 +71,23 @@ const IndexPage: React.FC<PageProps<DataProps>> = ({data, path}) => {
       </div>
 
       {/* the blogs posts */}
-      <div id="blog-posts">
-        <StaticQuery
-          query={query}
-          render={data => (
-            <div key={data.strapiId}>
-            {data.allStrapiBlogPosts.edges.map(post => (
-              <BlogPost key={post.strapiId} post={post}></BlogPost>
-            ))}
-            </div>
-          )}
-        />
+      <div className="bg-gray-100">
+
+        <div className="flex items-center justify-center p-8">
+          <h1 className="text-xl font-bold">Featured Posts</h1>
+        </div>
+        <div id="blog-posts">
+          <StaticQuery
+            query={query}
+            render={data => (
+              <div key={data.strapiId}>
+              {data.allStrapiBlogPosts.edges.map(post => (
+                <BlogPost key={post.strapiId} post={post}></BlogPost>
+                ))}
+              </div>
+            )}
+            />
+          </div>
       </div>
     </Layout>
   );

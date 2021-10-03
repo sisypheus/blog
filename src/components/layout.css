@@ -6,4 +6,5 @@ html {
   height: 100vh !important;
   margin: 0;
   overflow-x: hidden;
+  font-family: proxima-nova, sans-serif;
 }
