@@ -26,6 +26,8 @@ const IndexPage: React.FC<PageProps<DataProps>> = ({data, path}) => {
           strapiId
           Content
           Description
+          Slug
+          Title
           Cover {
             localFile {
               childImageSharp {
@@ -33,7 +35,6 @@ const IndexPage: React.FC<PageProps<DataProps>> = ({data, path}) => {
               }
             }
           }
-          Title
         }
       }
     }
@@ -96,15 +97,15 @@ const IndexPage: React.FC<PageProps<DataProps>> = ({data, path}) => {
             render={data => (
               <div key={data.strapiId}>
               {data.allStrapiBlogPosts.edges.map(post => (
-                <BlogPost key={post.strapiId} post={post}></BlogPost>
-                ))}
+                <BlogPost key={post.node.strapiId} post={post}></BlogPost>
+              ))}
               </div>
             )}
             />
           </div>
           <div className="p-8 max-w-sm m-auto my-8 bg-white rounded-2xl ring-gray-200 ring-1 shadow-xl flex flex-col items-center justify-center">
             <p className="text-xl font-bold">
-              Want to see all my posts ?
+              Want to see more ?
             </p>
             <button className="mt-4 text-lg transform duration-300 hover:-translate-y-1 hover:bg-indigo-800 bg-indigo-700 p-2 px-4 rounded-lg text-white font-bold">
               All Posts
