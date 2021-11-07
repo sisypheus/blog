@@ -17,7 +17,7 @@ export default function Header({ siteTitle, props }) {
   return (
     <div >
       <div >
-        <div className={"absolute top-0 p-8 w-full" + (props === "visible" ? " bg-blue-900" : "")}>
+        <div className={"absolute top-0 p-8 w-full" + (props === "visible" ? " bg-blue-900" : " ")}>
           <div className="max-w-7xl m-auto flex items-center text-center justify-between">
             <p className="text-white font-black text-4xl font-mono">
               <Link to="/">

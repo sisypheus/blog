@@ -1,7 +1,22 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/node-apis/
- */
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+  const result = await graphql(`
+    query {
+      allStrapiBlogPosts {
+        nodes {
+          Slug
+        }
+      }
+    }
+  `)
 
-// You can delete this file if you're not using it
+  result.data.allStrapiBlogPosts.nodes.forEach(post => {
+    createPage({
+      path: `/post/${post.Slug}`,
+      component: require.resolve(`./src/templates/post-template.tsx`),
+      context: {
+        slug: post.Slug,
+      },
+    })
+  })
+}
