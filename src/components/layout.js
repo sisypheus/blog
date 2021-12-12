@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
     <>
       <div>
         <Header></Header>
-        <main>{children}</main>
+        <main className="z-0">{children}</main>
         <footer className="flex items-center justify-center p-4 bg-gray-700 text-white">
           Theo Poette © {new Date().getFullYear()}, Made with ❤️ in Lille
         </footer>
