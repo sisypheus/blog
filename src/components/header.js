@@ -78,9 +78,9 @@ export default function Header({ siteTitle, props }) {
             </svg>
           </button>
           {isMenuOpen && (
-            <div className="absolute top-0 left-0 w-full z-50">
-              <div className="p-8 bg-gray-100 border rounded shadow-sm">
-                <div className="flex items-center justify-between mb-4">
+            <div className="absolute top-0 right-0 z-20">
+              <div className="pt-4 pb-8 pl-8 pr-4 bg-gray-200 h-full border rounded shadow-sm transform transition-all delay-150">
+                <div className="flex items-center space-x-4 justify-between mb-4">
                   <div>
                     <a
                       href="/"
@@ -88,7 +88,7 @@ export default function Header({ siteTitle, props }) {
                       title="Company"
                       className="inline-flex items-center"
                     >
-                      <span className="text-xl font-bold tracking-wide text-gray-800 uppercase">
+                      <span className="text-xl font-bold text-center tracking-wide text-gray-800 uppercase">
                         {"<THEO'S BLOG>"}
                       </span>
                     </a>
@@ -97,7 +97,7 @@ export default function Header({ siteTitle, props }) {
                     <button
                       aria-label="Close Menu"
                       title="Close Menu"
-                      className="p-2 -mt-2 -mr-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                      className="p-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       <svg className="w-5 text-gray-600" viewBox="0 0 24 24">
@@ -113,22 +113,22 @@ export default function Header({ siteTitle, props }) {
                   <ul className="space-y-6">
                     <li>
                       <button className="transform duration-300 hover:-translate-y-1">
-                        <Link className="p-3 text-lg rounded-lg bg-gray-600 font-semibold hover:bg-gray-800" activeClassName="p-3 text-lg rounded-lg font-semibold bg-indigo-700 hover:bg-indigo-800" to="/">Home</Link>
+                        <Link className="p-3 text-lg rounded-lg font-semibold" onClick={() => setIsMenuOpen(false)} activeClassName="p-3 text-lg rounded-lg font-semibold text-indigo-700" to="/">Home</Link>
                       </button>
                     </li>
                     <li>
                       <button className="transform duration-300 hover:-translate-y-1">
-                        <Link className="p-3 text-lg rounded-lg bg-gray-600 font-semibold hover:bg-gray-800" activeClassName="p-3 text-lg rounded-lg font-semibold bg-indigo-700 hover:bg-indigo-800" to="/">Home</Link>
+                        <AnchorLink className="p-3 text-lg rounded-lg font-semibold" onAnchorLinkClick={() => setIsMenuOpen(false)} to="/#featured-posts">Featured</AnchorLink>
                       </button>
                     </li>
                     <li>
                       <button className="transform duration-300 hover:-translate-y-1">
-                        <Link className="p-3 text-lg rounded-lg bg-gray-600 font-semibold hover:bg-gray-800" activeClassName="p-3 text-lg rounded-lg font-semibold bg-indigo-700 hover:bg-indigo-800" to="/">Home</Link>
+                        <Link className="p-3 text-lg rounded-lg font-semibold" onClick={() => setIsMenuOpen(false)} to="/posts">Posts</Link>
                       </button>
                     </li>
                     <li>
                       <button className="transform duration-300 hover:-translate-y-1">
-                        <Link className="p-3 text-lg rounded-lg bg-gray-600 font-semibold hover:bg-gray-800" activeClassName="p-3 text-lg rounded-lg font-semibold bg-indigo-700 hover:bg-indigo-800" to="/">Home</Link>
+                        <a href="https://theopoette.me" className="p-3 text-lg rounded-lg font-semibold">My website</a>
                       </button>
                     </li>
                   </ul>
