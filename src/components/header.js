@@ -44,7 +44,7 @@ export default function Header({ siteTitle }) {
               <AnchorLink className="p-3 text-lg rounded-lg bg-gray-600 font-semibold hover:bg-gray-800" to="/#featured-posts">Featured</AnchorLink>
             </button>
             <button className="transform duration-300 hover:-translate-y-1">
-              <Link className="p-3 text-lg rounded-lg bg-gray-600 font-semibold hover:bg-gray-800" to="/posts">Posts</Link>
+              <Link className="p-3 text-lg rounded-lg bg-gray-600 font-semibold hover:bg-gray-800" activeClassName="p-3 text-lg rounded-lg font-semibold bg-indigo-700 hover:bg-indigo-800" to="/posts/">Posts</Link>
             </button>
             <button className="transform duration-300 hover:-translate-y-1">
               <a href="https://theopoette.me" className="p-3 text-lg rounded-lg bg-gray-600 font-semibold hover:bg-gray-800">My website</a>

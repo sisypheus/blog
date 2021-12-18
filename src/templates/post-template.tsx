@@ -11,17 +11,14 @@ import ReactMarkdown from 'react-markdown';
 const Post = ({ location, data, pageContext }) => {
   const urlSlug = location.pathname.split('/');
   const post = data.strapiBlogPosts;
-
-  console.log(urlSlug, pageContext.slug);
-
-  const validUrl = isBlogPostValid();
+  const validUrl = isUrlValidPost();
 
   if (!validUrl)
     return <NotFoundPage />;
 
   const coverImage = getImage(post.Cover.localFile);
 
-  function isBlogPostValid() {
+  function isUrlValidPost() {
     try {
       if (urlSlug[urlSlug.length - 2] !== pageContext.slug || post === null) {
         console.log(pageContext.slug);
@@ -33,10 +30,15 @@ const Post = ({ location, data, pageContext }) => {
     return true;
   }
 
-  console.log(post);
+  const displaySections = () => {
+    return post.section.map((section, index) =>
+      <Section key={index} section={section} />
+    );
+  }
+
   return (
     <>
-      <Header></Header>
+      <Header />
       <Seo title={post.Title} />
       <div className="flex-col items-center justify-center max-w-5xl m-auto">
         <div className="text-center pt-4">
@@ -48,24 +50,28 @@ const Post = ({ location, data, pageContext }) => {
             objectPosition: 'center',
           }} alt="Blog cover image" />
         </div>
-        {/* {post.section.length && post.section.forEach((section) => {
-          return <Section section={section} />
-        })} */}
-        <div className="p-8">
-          <p className="font-mono tracking-tight">{post.Content}</p>
-        </div>
+        {displaySections()}
       </div>
     </>
   );
 };
 
-// const Section = ({ section }) => {
-//   return (
-//     <div>
-//       hello this is a section
-//     </div>
-//   )
-// }
+const Section = ({ section }) => {
+  const image = getImage(section.image.localFile);
+
+  return (
+    <div className="p-8">
+      {image && (
+        <GatsbyImage image={image} imgStyle={{
+          objectFit: 'cover',
+          objectPosition: 'center',
+        }} alt="Section image" />
+      )}
+      <ReactMarkdown>{section.description}</ReactMarkdown>
+      <p className="font-mono tracking-tight font-semibold">{section.content}</p>
+    </div>
+  )
+}
 
 export default Post;
 
