@@ -4,7 +4,7 @@ import { PageProps } from 'gatsby';
 import { graphql, useStaticQuery } from 'gatsby';
 import { StaticImage, GatsbyImage, getImage } from 'gatsby-plugin-image';
 
-const BlogPost = ({post}) => {
+const BlogPost = ({ post }) => {
   const image = getImage(post.node.Cover?.localFile);
   return (
     <Link to={`/post/${post.node.Slug}/`} >

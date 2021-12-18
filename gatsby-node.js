@@ -11,11 +11,12 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   result.data.allStrapiBlogPosts.nodes.forEach(post => {
+    const slug = post.Slug;
     createPage({
-      path: `/post/${post.Slug}`,
+      path: `/post/${slug}`,
       component: require.resolve(`./src/templates/post-template.tsx`),
       context: {
-        slug: post.Slug,
+        slug: slug,
       },
     })
   })

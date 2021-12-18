@@ -66,7 +66,7 @@ const IndexPage = ({ data }) => {
                   <p data-sal="slide-left" data-sal-duration="1200" data-sal-delay="900">
                     If you want to see my projects, or get to know me better, visit:
                   </p>
-                  <button className="bg-white m-4 border-4 border-indigo-900 text-indigo-900 rounded-lg py-2 px-4 font-bold font-sans hover:bg-indigo-900 hover:text-white">
+                  <button className="bg-white m-4 border-4 transition-all duration-200 border-indigo-900 text-indigo-900 rounded-lg py-2 px-4 font-bold font-sans hover:bg-indigo-900 hover:text-white">
                     <a href="https://theopoette.me">My website</a>
                   </button>
                 </div>
@@ -85,7 +85,6 @@ const IndexPage = ({ data }) => {
         </div>
         <div id="featured-posts">
           {data.allStrapiBlogPosts.edges.map(post => (
-            console.log(post),
             <BlogPost key={post.node.strapiId} post={post}></BlogPost>
           ))}
         </div>

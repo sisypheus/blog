@@ -6,33 +6,51 @@ import Seo from '../components/seo';
 import { GatsbyImage, getImageData } from 'gatsby-plugin-image';
 import { getImage } from 'gatsby-plugin-image';
 import Header from '../components/header';
+import ReactMarkdown from 'react-markdown';
 
 const Post = ({ location, data, pageContext }) => {
   const urlSlug = location.pathname.split('/');
   const post = data.strapiBlogPosts;
-  try {
-    if (urlSlug[urlSlug.length - 2] !== pageContext.slug || post === null) {
-      return <NotFoundPage></NotFoundPage>
-    }
-  } catch (error) {
-    return <NotFoundPage></NotFoundPage>
-  }
-  console.log(post.Cover.localFile);
+
+  console.log(urlSlug, pageContext.slug);
+
+  const validUrl = isBlogPostValid();
+
+  if (!validUrl)
+    return <NotFoundPage />;
+
   const coverImage = getImage(post.Cover.localFile);
+
+  function isBlogPostValid() {
+    try {
+      if (urlSlug[urlSlug.length - 2] !== pageContext.slug || post === null) {
+        console.log(pageContext.slug);
+        return false;
+      }
+    } catch (error) {
+      return false;
+    }
+    return true;
+  }
+
+  console.log(post);
   return (
     <>
-      <Header props={"visible"}></Header>
+      <Header></Header>
       <Seo title={post.Title} />
-      <div className="md:p-8 md:w-4/5 m-auto">
-        <GatsbyImage image={coverImage} imgStyle={{
-          objectFit: 'cover',
-          objectPosition: 'center',
-        }} alt="Blog cover image" />
-      </div>
       <div className="flex-col items-center justify-center max-w-5xl m-auto">
         <div className="text-center pt-4">
           <h1 className="text-2xl font-sans font-black">{post.Title}</h1>
         </div>
+        <div className="md:p-8 m-auto">
+          <GatsbyImage image={coverImage} imgStyle={{
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }} alt="Blog cover image" />
+        </div>
+        {/* {post.section.length && post.section.forEach((section) => {
+          return <Section section={section} />
+        })} */}
         <div className="p-8">
           <p className="font-mono tracking-tight">{post.Content}</p>
         </div>
@@ -40,6 +58,14 @@ const Post = ({ location, data, pageContext }) => {
     </>
   );
 };
+
+// const Section = ({ section }) => {
+//   return (
+//     <div>
+//       hello this is a section
+//     </div>
+//   )
+// }
 
 export default Post;
 
@@ -49,6 +75,17 @@ export const query = graphql`
       Title
       Content
       Slug
+      section {
+        content
+        description
+        image {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+      }
       Cover {
         localFile {
           childImageSharp {
