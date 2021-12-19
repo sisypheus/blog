@@ -16,8 +16,8 @@ const BlogPost = ({ post }) => {
               <GatsbyImage className="rounded-l-2xl col-span-2" image={image} alt="Blog post cover image" />
             )}
             {/* title and description of the post */}
-            <div className="col-span-3 w-auto max-w-lg space-y-2 p-4">
-              <h1 className="text-xl font-bold">{post.node.Title}</h1>
+            <div className="col-span-3 prose w-auto max-w-lg space-y-2 p-4">
+              <h1 className="text-xl font-bold tracking-tight">{post.node.Title}</h1>
 
               {/* TODO category items */}
 

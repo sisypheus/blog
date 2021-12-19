@@ -11,11 +11,13 @@ module.exports = {
         '50ch': '50ch',
         '60ch': '60ch',
         '70ch': '70ch',
-      }
+      },
     }
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
