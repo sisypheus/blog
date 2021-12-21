@@ -4,6 +4,7 @@ import Layout from '../components/layout';
 import Seo from '../components/seo';
 import { graphql } from 'gatsby';
 import Post from '../components/blog-post';
+import SearchBar from '../components/search_bar';
 
 const AllPosts = ({ data }) => {
 
@@ -16,10 +17,16 @@ const AllPosts = ({ data }) => {
     );
   }
 
+  const filterPostsFromSearchBar = (filter: string) => {
+    console.log('la');
+    console.log(filter);
+  }
+
   return (
     <>
       <Layout>
         <Seo title="All posts" />
+        <SearchBar filterPosts={filterPostsFromSearchBar} />
         {displayPosts()}
       </Layout>
     </>

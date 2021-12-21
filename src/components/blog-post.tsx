@@ -7,8 +7,8 @@ import { StaticImage, GatsbyImage, getImage } from 'gatsby-plugin-image';
 const BlogPost = ({ post }) => {
   const image = getImage(post.node.Cover?.localFile);
   return (
-    <Link to={`/post/${post.node.Slug}/`} >
-      <div className="flex items-center justify-center p-3">
+    <div className="flex items-center justify-center p-3">
+      <Link to={`/post/${post.node.Slug}/`} >
         <div className="cursor-pointer bg-white rounded-2xl ring-1 ring-gray-200 shadow-xl">
           <div className="grid grid-flow-col grid-cols-5 gap-8">
             {/* cover image of the post */}
@@ -25,8 +25,8 @@ const BlogPost = ({ post }) => {
             </div>
           </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   )
 };
 
