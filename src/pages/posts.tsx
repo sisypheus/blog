@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/header';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
@@ -7,28 +7,41 @@ import Post from '../components/blog-post';
 import SearchBar from '../components/search_bar';
 
 const AllPosts = ({ data }) => {
-
-  const blogPosts = data.allStrapiBlogPosts.edges;
-  console.log(blogPosts.length);
+  const [blogPosts, setBlogPosts] = useState(data.allStrapiBlogPosts.edges);
 
   const displayPosts = () => {
-    return blogPosts.map((post, index) =>
-      <Post key={index} post={post} />
-    );
+    if (blogPosts.length > 0) {
+      return blogPosts.map((post, index) =>
+        <Post key={index} post={post} />
+      );
+    } else {
+      return (
+        <div className="flex items-center justify-center">
+          <p className="prose-xl font-semibold">No blog post found.</p>
+        </div>
+      );
+    }
   }
 
   const filterPostsFromSearchBar = (filter: string) => {
-    console.log('la');
-    console.log(filter);
+    const filteredPosts = data.allStrapiBlogPosts.edges.filter(post => {
+      return post.node.Title.toLowerCase().includes(filter.toLowerCase());
+    })
+    setBlogPosts(filteredPosts);
   }
 
   return (
     <>
-      <Layout>
-        <Seo title="All posts" />
-        <SearchBar filterPosts={filterPostsFromSearchBar} />
-        {displayPosts()}
-      </Layout>
+      <Header />
+      <Seo title="All posts" />
+      <SearchBar filterPosts={filterPostsFromSearchBar} />
+      {displayPosts()}
+      <div className="pb-8"></div>
+      <div className="fixed bottom-0 w-full">
+        <footer className="flex items-center justify-center p-4 bg-gray-700 text-white">
+          Theo Poette © {new Date().getFullYear()}, Made with ❤️ in Lille
+        </footer>
+      </div>
     </>
   )
 }
