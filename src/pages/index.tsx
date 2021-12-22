@@ -6,7 +6,6 @@ import Layout from '../components/layout';
 import Seo from '../components/seo';
 import background from '../images/layered-waves.svg';
 import BlogPost from '../components/blog_card';
-import { useStaticQuery, StaticQuery } from 'gatsby';
 
 export const pageQuery = graphql`
   {
@@ -14,7 +13,6 @@ export const pageQuery = graphql`
     edges {
       node {
         strapiId
-        Content
         Description
         Slug
         Title
@@ -32,7 +30,6 @@ export const pageQuery = graphql`
   `;
 
 const IndexPage = ({ data }) => {
-  console.log(data);
   return (
     <Layout>
       <Seo title="Home" />
@@ -56,7 +53,7 @@ const IndexPage = ({ data }) => {
                 />
               </div>
               <div className="flex items-center text-center col-span-3 p-4">
-                <div className="text-white text-xl font-bold max-w-lg font-sans">
+                <div className="text-white text-xl font-bold max-w-lg font-sans leading-8">
                   <p data-sal="slide-left" data-sal-duration="1200" data-sal-delay="300">
                     Hi, Welcome to my blog!
                   </p>

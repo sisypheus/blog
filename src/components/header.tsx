@@ -28,10 +28,10 @@ export default function Header({ siteTitle }) {
   }, []);
 
   return (
-    <div className={`z-10 transition ease-in duration-200 ${location.pathname === '/' ? 'fixed' : 'sticky'} top-0 w-full m-auto bg-transparent px-4 py-8 sm:max-w-xl md:max-w-full md:px-24 lg:px-24 ${top ? "" : " bg-gray-100"}`} >
+    <div className={`z-10 transition ease-in duration-200 ${location.pathname === '/' ? 'fixed' : 'sticky'} top-0 w-full m-auto bg-transparent px-4 py-6 sm:max-w-xl md:max-w-full md:px-24 lg:px-24 ${top ? "" : " bg-gray-100"}`} >
       <div className="m-auto flex items-center justify-between">
-        <p className={`flex-1 font-bold ${location.pathname === '/' ? (top ? "text-white" : "text-black") : "text-black"} text-4xl tracking-wide`}>
-          <Link to="/">
+        <p className={`flex-1 font-bold ${location.pathname === '/' ? (top ? "text-white" : "text-black") : "text-black"} text-4xl`}>
+          <Link className="tracking-tighter" to="/">
             {"<THEO'S BLOG>"}
           </Link>
         </p>
@@ -123,7 +123,7 @@ export default function Header({ siteTitle }) {
                     </li>
                     <li>
                       <button className="transform duration-300 hover:-translate-y-1">
-                        <Link className="p-3 text-lg rounded-lg font-semibold" onClick={() => setIsMenuOpen(false)} to="/posts">Posts</Link>
+                        <Link className="p-3 text-lg rounded-lg font-semibold" onClick={() => setIsMenuOpen(false)} activeClassName="p-3 text-lg rounded-lg font-semibold text-indigo-700" to="/posts/">Posts</Link>
                       </button>
                     </li>
                     <li>

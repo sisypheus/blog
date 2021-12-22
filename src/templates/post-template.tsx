@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import NotFoundPage from '../pages/404';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
-import { GatsbyImage, getImageData } from 'gatsby-plugin-image';
+import { GatsbyImage, getImageData, StaticImage } from 'gatsby-plugin-image';
 import { getImage } from 'gatsby-plugin-image';
 import Header from '../components/header';
 import ReactMarkdown from 'react-markdown';
@@ -31,7 +31,7 @@ const Post = ({ location, data, pageContext }) => {
   }
 
   const displaySections = () => {
-    return post.section.map((section, index) =>
+    return post.Section.map((section, index) =>
       <Section key={index} section={section} />
     );
   }
@@ -41,8 +41,19 @@ const Post = ({ location, data, pageContext }) => {
       <Header />
       <Seo title={post.Title} />
       <div className="flex-col items-center justify-center max-w-5xl m-auto">
-        <div className="text-center pt-4">
-          <h1 className="text-2xl font-sans font-black">{post.Title}</h1>
+        <div className="text-center p-10 space-y-2">
+          <h1 className="text-3xl tracking-tight font-extrabold">{post.Title}</h1>
+          <div className="flex items-center justify-center space-x-4">
+            <StaticImage
+              src="../images/profile.jpg"
+              alt="Picture of author"
+              className="rounded-full w-12 h-12"
+            />
+            <div>
+              <p className="font-medium text-gray-800 tracking-tight text-sm">Theo Poette</p>
+              <a style={{ 'color': 'rgb(14,165,233)' }} href='https://github.com/sisypheus'>@sisypheus</a>
+            </div>
+          </div>
         </div>
         <div className="md:p-8 m-auto">
           <GatsbyImage image={coverImage} imgStyle={{
@@ -50,25 +61,18 @@ const Post = ({ location, data, pageContext }) => {
             objectPosition: 'center',
           }} alt="Blog cover image" />
         </div>
-        {displaySections()}
+        <div className="max-w-3xl m-auto">
+          {displaySections()}
+        </div>
       </div>
     </>
   );
 };
 
 const Section = ({ section }) => {
-  const image = getImage(section.image.localFile);
-
   return (
     <div className="p-8">
-      {image && (
-        <GatsbyImage image={image} imgStyle={{
-          objectFit: 'cover',
-          objectPosition: 'center',
-        }} alt="Section image" />
-      )}
-      <ReactMarkdown>{section.description}</ReactMarkdown>
-      <p className="font-mono tracking-tight font-semibold">{section.content}</p>
+      <ReactMarkdown className="prose">{section.Content}</ReactMarkdown>
     </div>
   )
 }
@@ -79,19 +83,12 @@ export const query = graphql`
   query($slug: String!) {
     strapiBlogPosts(Slug: { eq: $slug }) {
       Title
-      Content
+      Introduction
       Slug
-      section {
-        content
-        description
-        image {
-          localFile {
-            childImageSharp {
-              gatsbyImageData
-            }
-          }
-        }
+      Section {
+        Content
       }
+      published_at
       Cover {
         localFile {
           childImageSharp {
