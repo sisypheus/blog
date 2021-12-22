@@ -42,6 +42,7 @@ const Post = ({ location, data, pageContext }) => {
       <Seo title={post.Title} />
       <div className="flex-col items-center justify-center max-w-5xl m-auto">
         <div className="text-center p-10 space-y-2">
+          <h1>{post.published_at && new Date(post.published_at).toLocaleDateString()}</h1>
           <h1 className="text-3xl tracking-tight font-extrabold">{post.Title}</h1>
           <div className="flex items-center justify-center space-x-4">
             <StaticImage
