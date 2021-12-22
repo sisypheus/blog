@@ -79,7 +79,7 @@ export default function Header({ siteTitle }) {
           </button>
           {isMenuOpen && (
             <div className="absolute top-0 right-0 z-20">
-              <div className="pt-4 pb-8 pl-8 pr-4 bg-gray-200 h-full border rounded shadow-sm transform transition-all delay-150">
+              <div className="pt-4 pb-8 pl-8 pr-4 bg-gray-100 h-full border rounded shadow-sm transform transition-all delay-150">
                 <div className="flex items-center space-x-4 justify-between mb-4">
                   <div>
                     <a

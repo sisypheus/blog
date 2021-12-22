@@ -3,7 +3,7 @@ import Header from '../components/header';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
 import { graphql } from 'gatsby';
-import Post from '../components/blog-post';
+import Post from '../components/blog_card';
 import SearchBar from '../components/search_bar';
 
 const AllPosts = ({ data }) => {

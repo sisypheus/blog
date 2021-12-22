@@ -5,7 +5,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
 import background from '../images/layered-waves.svg';
-import BlogPost from '../components/blog-post';
+import BlogPost from '../components/blog_card';
 import { useStaticQuery, StaticQuery } from 'gatsby';
 
 export const pageQuery = graphql`
@@ -81,7 +81,7 @@ const IndexPage = ({ data }) => {
       <div className="bg-gray-100">
 
         <div className="flex items-center justify-center p-8">
-          <h1 className="text-3xl font-bold font-serif border-b-4 border-blue-600">Featured</h1>
+          <h1 className="text-5xl font-bold font-serif border-b-4 border-blue-600">Featured</h1>
         </div>
         <div id="featured-posts">
           {data.allStrapiBlogPosts.edges.map(post => (
