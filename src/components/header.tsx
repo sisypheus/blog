@@ -30,7 +30,7 @@ export default function Header({ siteTitle }) {
   return (
     <div className={`z-10 transition ease-in duration-200 ${location.pathname === '/' ? 'fixed' : 'sticky'} top-0 w-full m-auto bg-transparent px-4 py-6 sm:max-w-xl md:max-w-full md:px-24 lg:px-24 ${top ? "" : " bg-gray-100"}`} >
       <div className="m-auto flex items-center justify-between">
-        <p className={`flex-1 font-bold ${location.pathname === '/' ? (top ? "text-white" : "text-black") : "text-black"} text-4xl`}>
+        <p className={`flex-1 font-bold ${location.pathname === '/' ? (top ? "text-white" : "text-black") : "text-black"} text-3xl whitespace-nowrap sm:text-4xl`}>
           <Link className="tracking-tighter" to="/">
             {"<THEO'S BLOG>"}
           </Link>

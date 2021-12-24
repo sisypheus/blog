@@ -49,6 +49,7 @@ const Post = ({ location, data, pageContext }) => {
               src="../images/profile.jpg"
               alt="Picture of author"
               className="rounded-full w-12 h-12"
+              style={{ 'WebkitTransform': 'translateZ(0)' }}
             />
             <div>
               <p className="font-medium text-gray-800 tracking-tight text-sm">Theo Poette</p>
