@@ -1,6 +1,6 @@
-const dotenv = require('dotenv');
+const dotenv = require("dotenv")
 
-dotenv.config();
+dotenv.config()
 
 module.exports = {
   siteMetadata: {
@@ -52,7 +52,7 @@ module.exports = {
     `gatsby-plugin-scroll-reveal`,
     {
       resolve: `gatsby-plugin-scroll-reveal`,
-    }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

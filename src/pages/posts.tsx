@@ -1,33 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import Header from '../components/header';
-import Layout from '../components/layout';
-import Seo from '../components/seo';
-import { graphql } from 'gatsby';
-import Post from '../components/blog_card';
-import SearchBar from '../components/search_bar';
+import React, { useEffect, useState } from "react"
+import Header from "../components/header"
+import Layout from "../components/layout"
+import Seo from "../components/seo"
+import { graphql } from "gatsby"
+import Post from "../components/blog_card"
+import SearchBar from "../components/search_bar"
 
 const AllPosts = ({ data }) => {
-  const [blogPosts, setBlogPosts] = useState(data.allStrapiBlogPosts.edges);
+  const [blogPosts, setBlogPosts] = useState(data.allStrapiBlogPosts.edges)
 
   const displayPosts = () => {
     if (blogPosts.length > 0) {
-      return blogPosts.map((post, index) =>
-        <Post key={index} post={post} />
-      );
+      return blogPosts.map((post, index) => <Post key={index} post={post} />)
     } else {
       return (
         <div className="flex items-center justify-center">
           <p className="prose-xl font-semibold">No blog post found.</p>
         </div>
-      );
+      )
     }
   }
 
   const filterPostsFromSearchBar = (filter: string) => {
     const filteredPosts = data.allStrapiBlogPosts.edges.filter(post => {
-      return post.node.Title.toLowerCase().includes(filter.toLowerCase());
+      return post.node.Title.toLowerCase().includes(filter.toLowerCase())
     })
-    setBlogPosts(filteredPosts);
+    setBlogPosts(filteredPosts)
   }
 
   return (
@@ -47,25 +45,25 @@ const AllPosts = ({ data }) => {
 }
 
 export const pageQuery = graphql`
-{
-  allStrapiBlogPosts {
-    edges {
-      node {
-        strapiId
-        Description
-        Slug
-        Title
-        Cover {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 400, height: 250)
+  {
+    allStrapiBlogPosts {
+      edges {
+        node {
+          strapiId
+          Description
+          Slug
+          Title
+          Cover {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(width: 400, height: 250)
+              }
             }
           }
         }
       }
     }
   }
-}
 `
 
 export default AllPosts

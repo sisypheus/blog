@@ -14,9 +14,9 @@ const NotFoundPage = () => (
           <p className="text-4xl text-blue-400">404</p>
         </div>
       </div>
-    <footer className="fixed bottom-0 flex items-center justify-center p-4 bg-gray-700 text-white w-full">
-      Theo Poette © {new Date().getFullYear()}, Made with ❤️ in Lille
-    </footer>
+      <footer className="fixed bottom-0 flex items-center justify-center p-4 bg-gray-700 text-white w-full">
+        Theo Poette © {new Date().getFullYear()}, Made with ❤️ in Lille
+      </footer>
     </div>
   </>
 )
