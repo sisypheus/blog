@@ -92,7 +92,7 @@ const Post = ({ location, data, pageContext }) => {
 const Section = ({ section }) => {
   return (
     <div className="p-6 pb-12 pt-8">
-      <ReactMarkdown className="prose text-gray-600">
+      <ReactMarkdown className="prose lg:prose-lg text-gray-600">
         {section.Content}
       </ReactMarkdown>
     </div>
